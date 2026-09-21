@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-page: #F5F6FB;
+  --color-ink: #14152B;
+  --color-muted: #565B82;
+  --color-soft: #9FA8DA;
+  --color-accent: #5C63A3;
+  --color-accent-dark: #454B85;
+  --color-line: #E2E4F2;
+  --color-resume: #EDEFFA;
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+  --breakpoint-desktop: 50rem;
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+  body { margin: 0; background: var(--color-page); color: var(--color-ink); }
+  h1, h2, h3 { font-family: var(--font-heading); }
+  button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
+  button:not(:disabled), summary { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--color-accent-dark); outline-offset: 5px; }
+  ::selection { background: var(--color-soft); color: var(--color-ink); }
+}
+
+@layer components {
+  .text-link { text-decoration: underline; text-decoration-color: var(--color-accent); text-underline-offset: 7px; transition: color 180ms; }
+  .text-link:hover { color: var(--color-accent-dark); }
+  .field { width: 100%; border: 1px solid var(--color-line); border-radius: 4px; background: var(--color-page); padding: 11px 13px; color: var(--color-ink); font-size: 14px; }
+}
+
+dialog::backdrop { background: rgb(20 21 43 / 65%); backdrop-filter: blur(4px); }
+.entrance { animation: enter 550ms ease-out both; }
+@keyframes enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
