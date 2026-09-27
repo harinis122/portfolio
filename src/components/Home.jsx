@@ -26,9 +26,9 @@ export default function Home() {
       </div>
     </div>
     {profile.portrait ? (
-      <img src={profile.portrait} alt={`${profile.name} portrait`} className="h-full w-full object-cover aspect-4/5 max-w-[363px] justify-self-center rounded-[14px]" />
+      <img src={profile.portrait} alt={`${profile.name} portrait`} className="h-auto w-full self-start object-cover aspect-4/5 max-w-[363px] justify-self-center rounded-[14px]" />
     ) : (
-      <div role="img" aria-label={`${profile.name} portrait — placeholder`} className="flex items-center justify-center bg-soft aspect-4/5 w-full max-w-[363px] justify-self-center rounded-[14px]">
+      <div role="img" aria-label={`${profile.name} portrait — placeholder`} className="flex items-center justify-center bg-soft aspect-4/5 w-full self-start max-w-[363px] justify-self-center rounded-[14px]">
         <span className="text-[7px] tracking-wide text-ink/70">PHOTO</span>
       </div>
     )}
