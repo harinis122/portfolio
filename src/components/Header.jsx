@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { profile } from '../content';
-import { ExternalLink } from './Shared';
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState('home');
@@ -20,10 +19,18 @@ export default function Header() {
   }, []);
   return <header className="sticky top-0 z-20 border-b border-accent bg-soft">
     <nav aria-label="Main navigation" className="flex min-h-[75px] flex-wrap items-center justify-between gap-x-5 gap-y-1 px-5 py-3 sm:px-8 desktop:px-12">
-      <a href="#home" className="font-heading text-base font-medium">{profile.name}</a>
-      <div className="flex items-center gap-4 text-[17px] sm:gap-9 sm:text-sm">
+      <a href="#home" className="font-heading text-[22px] font-medium">{profile.name}</a>
+      <div className="flex flex-wrap items-center gap-4 text-[17px] sm:gap-9 sm:text-[18px]">
         {['home', 'projects', 'contact'].map(id => <a key={id} href={`#${id}`} aria-current={activeSection === id ? 'location' : undefined} className={`flex min-h-11 items-center border-b transition-colors hover:border-accent ${activeSection === id ? 'border-accent' : 'border-transparent'}`}>{id[0].toUpperCase() + id.slice(1)}</a>)}
-        <ExternalLink href={profile.resume} className="rounded-lg bg-resume px-4 py-2 transition-colors hover:bg-[#D7DBF2] sm:px-5">Resume</ExternalLink>
+        {profile.resume ? (
+          <a href={profile.resume} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-resume px-4 py-2 transition-colors hover:bg-[#D7DBF2] sm:px-5">
+            Resume<span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        ) : (
+          <span aria-disabled="true" title="Link not provided yet" className="rounded-lg bg-resume px-4 py-2 transition-colors hover:bg-[#D7DBF2] sm:px-5">
+            Resume<span className="sr-only"> — link not provided yet</span>
+          </span>
+        )}
       </div>
     </nav>
   </header>;

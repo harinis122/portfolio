@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { profile } from '../content';
-import { SectionHeading } from './Shared';
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -10,7 +9,8 @@ export default function Contact() {
     event.currentTarget.reset();
   }
   return <section id="contact" aria-label="Contact" className="pt-16 pb-[60px] desktop:pt-[105px]">
-    <SectionHeading eyebrow="get in touch" title="Contact" />
+    <p className="mb-3 font-mono text-xs text-accent">get in touch</p>
+    <h2 className="text-[32px] leading-tight font-semibold">Contact</h2>
     <div className="mt-12 grid gap-9 desktop:grid-cols-[1fr_1.08fr] desktop:gap-20">
       <p className="max-w-[310px] leading-[1.65] text-muted desktop:pt-4">Have a project, opportunity, or question in mind? I'd love to hear from you — feel free to reach out here, or email me directly at <a className="text-link text-ink" href={`mailto:${profile.email}`}>{profile.email}</a>.</p>
       <form onSubmit={handleSubmit} className="rounded-lg border border-line bg-white p-6 sm:p-8">
